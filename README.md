@@ -20,8 +20,6 @@ public:
 	bool operator ==(int price);		//P7.1(1) 
 	bool operator ==(string title);		//P7.2(1)
 	bool operator ==(Book book);		//P7.2(1)
-	bool operator !();				//P7.3
-	friend bool operator <(string title, Book book);	//P7.4
 };
 
 Book& Book::operator +=(int price) {
@@ -51,15 +49,6 @@ bool Book::operator ==(Book book) {
 	else return false;
 }
 
-bool Book::operator !() {				//P7.3
-	if (price == 0) return true;
-	else return false;
-}
-
-bool operator < (string title, Book book) {	//P7.4
-	if (title < book.title) return true;
-	else return false;
-}
 
 int main() {
 	Book a("YOUTH", 20000, 300), b("FUTURE", 30000, 500);
@@ -74,15 +63,5 @@ int main() {
 	if (mp == "Masterpiece C++") cout << "This book is the Masterpiece C++." << endl; 	// Comparison of book title
 	if (mp == hq) cout << "These are some books." << endl; 					// Comparison of title, price & pages 
 	cout << "---P7.2(1)----------------------------------------------" << endl;
- 
-	Book book("Flee Market", 0, 50); // Price is 0.
-	if (!book) cout << "It is free." << endl;
-	cout << "---P7.3-------------------------------------------------" << endl;
 
-	string c;
-	cout << "Please enter the title of book >> ";
-	getline(cin, c); // Get the title of book from keyboard
-	if (c < a)
-		cout << a.getTitle() << " is after " << c << "!" << endl;
-	cout << "---P7.4-------------------------------------------------" << endl;
 }
